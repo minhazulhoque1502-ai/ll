@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OkWow - Exclusive Cash Offers &amp; Rewards</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .glow-text {
+            text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88;
+            animation: pulse-glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            from { text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88; }
+            to { text-shadow: 0 0 15px #00ff88, 0 0 25px #00ff88, 0 0 35px #00ff88, 0 0 45px #00ff88; }
+        }
+
+        .neon-border {
+            border: 2px solid #00ff88;
+            box-shadow: 0 0 10px #00ff88, inset 0 0 10px rgba(0, 255, 136, 0.1);
+            animation: border-pulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes border-pulse {
+            from { box-shadow: 0 0 10px #00ff88, inset 0 0 10px rgba(0, 255, 136, 0.1); }
+            to { box-shadow: 0 0 20px #00ff88, 0 0 30px #00ff88, inset 0 0 20px rgba(0, 255, 136, 0.2); }
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: #00ff88;
+            border-radius: 50%;
+            animation: pulse-dot 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.2); }
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #00ff88 0%, #00cc6a 100%);
+            height: 8px;
+            border-radius: 4px;
+            animation: progress-fill 3s ease-in-out infinite;
+        }
+
+        @keyframes progress-fill {
+            0% { width: 0%; }
+            100% { width: 87%; }
+        }
+
+        .countdown {
+            color: #ff4757;
+            font-weight: bold;
+            text-shadow: 0 0 10px #ff4757;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #00ff88;
+            border-radius: 50%;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        .transaction-ticker {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid #00ff88;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            animation: ticker-slide 20s linear infinite;
+        }
+
+        @keyframes ticker-slide {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: linear-gradient(45deg, #ff4757, #ff6b7a);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            animation: badge-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badge-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: cta-pulse 3s ease-in-out infinite;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+        }
+
+        @keyframes cta-pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); }
+        }
+
+        .trust-badge {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .trust-badge:hover {
+            background: rgba(0, 255, 136, 0.1);
+            border-color: #00ff88;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(26, 26, 46, 0.6) 100%);
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            background: rgba(0, 255, 136, 0.1);
+            border-color: #00ff88;
+            transform: translateY(-5px);
+        }
+
+        .star-rating {
+            color: #ffd700;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .counter {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00ff88;
+            text-shadow: 0 0 10px #00ff88;
+        }
+
+        @media (max-width: 768px) {
+            .glow-text {
+                font-size: 2rem;
+            }
+            .counter {
+                font-size: 1.5rem;
+            }
+        }
+
+        .offer-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .user-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #00ff88;
+        }
+
+        .success-image {
+            width: 100%;
+            max-width: 300px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 2px solid #00ff88;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+    </style>
+<style>
+/* Privacy Protection CSS */
+* {
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                    -webkit-touch-callout: none;
+                    -webkit-tap-highlight-color: transparent;
+                }
+
+img {
+                -webkit-user-drag: none;
+                -khtml-user-drag: none;
+                -moz-user-drag: none;
+                -o-user-drag: none;
+                user-drag: none;
+                pointer-events: none;
+            }
+
+@media print {
+                    body { display: none !important; }
+                }
+</style>
+</head>
+<body>
+<!-- Particles Background -->
+<div class="particles fixed inset-0 pointer-events-none z-0">
+<div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+<div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+<div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+<div class="particle" style="left: 40%; animation-delay: 3s;"></div>
+<div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+<div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+<div class="particle" style="left: 70%; animation-delay: 0.5s;"></div>
+<div class="particle" style="left: 80%; animation-delay: 1.5s;"></div>
+<div class="particle" style="left: 90%; animation-delay: 2.5s;"></div>
+</div>
+<!-- Header Section -->
+<header class="relative min-h-screen bg-cover bg-center bg-no-repeat" style="background-image: url('https://qubstudio.com/wp-content/uploads/2023/08/ila.jpg');">
+<div class="hero-overlay absolute inset-0"></div>
+<div class="relative z-10">
+<!-- Navigation -->
+<nav class="flex justify-between items-center p-6">
+<div class="glow-text text-4xl font-bold">OkWow</div>
+<div class="flex items-center space-x-4">
+<div class="flex items-center space-x-2">
+<div class="pulse-dot"></div>
+<span class="text-sm">1,347 Users Online Now</span>
+</div>
+</div>
+</nav>
+<!-- Transaction Ticker -->
+<div class="overflow-hidden py-2">
+<div class="transaction-ticker whitespace-nowrap">
+<span class="mr-8">🎉 Sarah M. just claimed $850 • 2 min ago</span>
+<span class="mr-8">💰 Mike T. earned $750 • 5 min ago</span>
+<span class="mr-8">⭐ Linda K. received $500 • 8 min ago</span>
+<span class="mr-8">🚀 James R. got $100 • 12 min ago</span>
+</div>
+</div>
+<!-- Hero Content -->
+<div class="flex flex-col lg:flex-row items-center justify-between px-6 py-16">
+<div class="lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0">
+<h1 class="text-5xl lg:text-7xl font-bold mb-6 glow-text">
+                        Unlock Exclusive Cash Rewards Today!
+                    </h1>
+<p class="text-xl lg:text-2xl mb-8 text-gray-300">
+                        Join thousands who've already claimed their rewards
+                    </p>
+<div class="flex flex-wrap justify-center lg:justify-start gap-4 mb-8">
+<div class="trust-badge">
+<i class="fas fa-shield-alt text-green-400"></i>
+<span class="ml-2">100% Verified</span>
+</div>
+<div class="trust-badge">
+<i class="fas fa-bolt text-yellow-400"></i>
+<span class="ml-2">Instant Payouts</span>
+</div>
+<div class="trust-badge">
+<i class="fas fa-headset text-blue-400"></i>
+<span class="ml-2">24/7 Support</span>
+</div>
+</div>
+<a class="block" href="https://www.aplfb8trk.com/3NR6RN1B/CQTZDSN/?sub1=ma"><button class="cta-button text-lg">
+<i class="fas fa-rocket mr-2"></i>Start Earning Now
+                    </button></a>
+</div>
+<div class="lg:w-1/2 flex justify-center">
+<img alt="Happy person celebrating with money" class="success-image" src="https://thumbs.dreamstime.com/b/woman-celebrating-success-winning-money-lottery-victory-holding-cash-banknotes-hand-portrait-excited-happy-proud-254116615.jpg"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Offers Grid Section -->
+<section class="py-16 px-6 gradient-bg">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-4xl lg:text-5xl font-bold text-center mb-4 glow-text">
+                Exclusive Cash Offers
+            </h2>
+<p class="text-center text-gray-300 mb-12 text-lg">
+                Choose your preferred earning method and start claiming rewards
+            </p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Cash App $850 Offer -->
+<div class="relative card-hover neon-border rounded-2xl p-6 bg-gray-900">
+<div class="badge">MOST POPULAR</div>
+<img alt="Cash App Interface" class="offer-image" src="https://s3.envato.com/files/398665332/44.jpg"/>
+<div class="flex items-center justify-between mb-4">
+<img alt="Happy user" class="user-avatar" src="https://st5.depositphotos.com/62628780/66403/i/1600/depositphotos_664034968-stock-photo-money-studio-portrait-happy-man.jpg"/>
+<div class="text-right">
+<div class="text-3xl font-bold text-green-400">$850</div>
+<div class="text-sm text-gray-400">Cash App Reward</div>
+</div>
+</div>
+<div class="countdown text-center mb-4" id="countdown1">
+                        ⏰ Limited Time: 23:59:45
+                    </div>
+<a class="block" href="https://www.aplfb8trk.com/3NR6RN1B/CQTZDSN/?sub1=ma">
+<button class="cta-button w-full">
+<i class="fas fa-mobile-alt mr-2"></i>Claim $850 Now
+                        </button>
+</a>
+</div>
+<!-- Cash App $750 Offer -->
+<div class="relative card-hover border-2 border-gray-700 rounded-2xl p-6 bg-gray-900">
+<div class="badge" style="background: linear-gradient(45deg, #ff9500, #ffb347);">TRENDING</div>
+<img alt="Cashback Interface" class="offer-image" src="https://static.vecteezy.com/system/resources/thumbnails/043/028/603/small_2x/onboarding-screen-ui-with-cashback-money-refund-and-loyalty-program-digital-concepts-banner-template-for-website-mobile-development-or-phone-app-flat-customer-receive-reward-and-save-cash-vector.jpg"/>
+<div class="flex items-center justify-between mb-4">
+<img alt="Happy user" class="user-avatar" src="https://www.shutterstock.com/image-photo/surprised-happy-african-man-holding-260nw-1455947288.jpg"/>
+<div class="text-right">
+<div class="text-3xl font-bold text-green-400">$750</div>
+<div class="text-sm text-gray-400">Cash App Reward</div>
+</div>
+</div>
+<div class="mb-4">
+<div class="text-sm text-gray-400 mb-2">87% claimed</div>
+<div class="bg-gray-700 rounded-full h-2">
+<div class="progress-bar rounded-full"></div>
+</div>
+</div>
+<a class="block" href="https://www.aplfb8trk.com/3NR6RN1B/CQTZDSN/?sub1=ma"><button class="cta-button w-full">
+<i class="fas fa-mobile-alt mr-2"></i>Claim $750 Now
+                    </button></a>
+</div>
+<!-- Seniors $500 Offer -->
+<div class="relative card-hover border-2 border-gray-700 rounded-2xl p-6 bg-gray-900">
+<div class="badge" style="background: linear-gradient(45deg, #6c5ce7, #a29bfe);">AGE 50+</div>
+<img alt="Senior using phone" class="offer-image" src="https://smpltec.com/wp-content/uploads/2023/09/What-are-the-benefits-of-using-mobile-phones-for-older-adults-SMPLTEC.webp"/>
+<div class="flex items-center justify-between mb-4">
+<img alt="Happy senior" class="user-avatar" src="https://c8.alamy.com/comp/2GN563A/happy-elderly-man-holding-a-smartphone-and-a-credit-card-isolated-on-white-background-2GN563A.jpg"/>
+<div class="text-right">
+<div class="text-3xl font-bold text-green-400">$500</div>
+<div class="text-sm text-gray-400">Seniors Special</div>
+</div>
+</div>
+<div class="text-center mb-4 text-purple-300">
+<i class="fas fa-heart mr-2"></i>Senior-Friendly Design
+                    </div>
+<a class="block" href="https://www.aplfb8trk.com/3NR6RN1B/CQTZDSN/?sub1=ma">
+<button class="cta-button w-full">
+<i class="fas fa-gift mr-2"></i>Claim $500 Now
+                        </button>
+</a>
+</div>
+<!-- Dollar Tree $1000 Offer -->
+<div class="relative card-hover border-2 border-gray-700 rounded-2xl p-6 bg-gray-900">
+<div class="badge" style="background: linear-gradient(45deg, #00cec9, #55efc4);">QUICK EARN</div>
+<img alt="Dollar Tree App" class="offer-image" src="https://images.ctfassets.net/nie44ndm9bqr/11zNrNcNYqIDgL2bdbJqX3/88a71d5a21fb7d67d5d3a002af388272/dollar-tree-app-phone-hacks-rakuten-offers-kcl-model-1698281676-1698281676.jpg"/>
+<div class="flex items-center justify-between mb-4">
+<div class="user-avatar flex items-center justify-center text-lg font-bold text-green-400 bg-gray-800" style="border-radius: 10px;">$1000</div>
+<div class="text-right">
+<div class="text-3xl font-bold text-green-400">$1000</div>
+<div class="text-sm text-gray-400">Dollar Tree Reward</div>
+</div>
+</div>
+<div class="text-center mb-4 text-cyan-300">
+<i class="fas fa-clock mr-2"></i>5 Min Setup
+                    </div>
+<a class="block" href="https://www.aplfb8trk.com/3NR6RN1B/CQTZDSN/?sub1=ma">
+<button class="cta-button w-full">
+<i class="fas fa-shopping-cart mr-2"></i>Claim $1000 Now
+                        </button>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Social Proof Section -->
+<section class="py-16 px-6 bg-gray-900">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-4xl font-bold text-center mb-12 glow-text">
+                Trusted by 50,000+ Members
+            </h2>
+<!-- Testimonials -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+<div class="testimonial-card">
+<div class="flex items-center mb-4">
+<img alt="Customer testimonial" class="user-avatar mr-4" src="https://www.shutterstock.com/image-photo/businessman-using-mobile-phone-point-260nw-2332847261.jpg"/>
+<div>
+<h4 class="font-bold">Michael S.</h4>
+<div class="star-rating">⭐⭐⭐⭐⭐</div>
+</div>
+</div>
+<p class="text-gray-300">"Amazing platform! I earned $850 in just 2 days. The process was so simple and payments are instant!"</p>
+</div>
+<div class="testimonial-card">
+<div class="flex items-center mb-4">
+<img alt="Customer review" class="user-avatar mr-4" src="https://www.shutterstock.com/image-photo/customer-review-good-rating-concept-260nw-1890952099.jpg"/>
+<div>
+<h4 class="font-bold">Sarah J.</h4>
+<div class="star-rating">⭐⭐⭐⭐⭐</div>
+</div>
+</div>
+<p class="text-gray-300">"Perfect for seniors like me! The interface is user-friendly and support team is incredibly helpful."</p>
+</div>
+<div class="testimonial-card">
+<div class="flex items-center mb-4">
+<img alt="5 star review" class="user-avatar mr-4" src="https://growth99.com/storage/2024/10/5-Star-Review-Generator-11_1-1024x935.webp" style="border-radius: 10px;"/>
+<div>
+<h4 class="font-bold">David R.</h4>
+<div class="star-rating">⭐⭐⭐⭐⭐</div>
+</div>
+</div>
+<p class="text-gray-300">"Legitimate and trustworthy! I've referred 10+ friends and they all love it. Highly recommended!"</p>
+</div>
+</div>
+<!-- Trust Badges -->
+<div class="flex flex-wrap justify-center gap-8">
+<div class="trust-badge">
+<i class="fas fa-lock text-green-400 text-2xl mb-2"></i>
+<div class="font-bold">SSL Secured</div>
+<div class="text-sm text-gray-400">256-bit Encryption</div>
+</div>
+<div class="trust-badge">
+<i class="fas fa-shield-alt text-blue-400 text-2xl mb-2"></i>
+<div class="font-bold">Verified Platform</div>
+<div class="text-sm text-gray-400">Trusted &amp; Safe</div>
+</div>
+<div class="trust-badge">
+<i class="fas fa-users text-purple-400 text-2xl mb-2"></i>
+<div class="font-bold counter" id="memberCounter">50,000+</div>
+<div class="text-sm text-gray-400">Active Members</div>
+</div>
+<div class="trust-badge">
+<i class="fas fa-credit-card text-yellow-400 text-2xl mb-2"></i>
+<div class="font-bold">Instant Payouts</div>
+<div class="text-sm text-gray-400">Same Day Processing</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Success Stories Section -->
+<section class="py-16 px-6 gradient-bg">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-4xl font-bold text-center mb-4 glow-text">
+                Real Success Stories
+            </h2>
+<p class="text-center text-gray-300 mb-12 text-lg">
+                See how our members are transforming their financial lives
+            </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="text-center">
+<img alt="Happy woman with smartphone and money" class="success-image mx-auto mb-6" src="https://thumbs.dreamstime.com/b/happy-woman-use-smartphone-rejoicing-game-win-receiving-money-dollar-cash-celebrating-success-lucky-rich-middle-aged-using-382768178.jpg"/>
+<h3 class="text-xl font-bold mb-2 text-green-400">Emma T.</h3>
+<p class="text-gray-300">"Earned $1,200 in my first week! This platform changed everything for me."</p>
+<div class="star-rating mt-2">⭐⭐⭐⭐⭐</div>
+</div>
+<div class="text-center">
+<img alt="Happy man with cash fan" class="success-image mx-auto mb-6" src="https://thumbs.dreamstime.com/b/happy-man-portrait-cash-fan-financial-freedom-money-prize-reward-isolated-blue-background-finance-savings-275510109.jpg"/>
+<h3 class="text-xl font-bold mb-2 text-green-400">Robert K.</h3>
+<p class="text-gray-300">"Financial freedom at last! I've earned over $5,000 in just 3 months."</p>
+<div class="star-rating mt-2">⭐⭐⭐⭐⭐</div>
+</div>
+<div class="text-center">
+<img alt="Excited person celebrating" class="success-image mx-auto mb-6" src="https://www.shutterstock.com/image-photo/excited-crazy-gen-z-blonde-260nw-2412393879.jpg"/>
+<h3 class="text-xl font-bold mb-2 text-green-400">Jessica M.</h3>
+<p class="text-gray-300">"So excited! Just hit my $10,000 milestone. Thank you OkWow!"</p>
+<div class="star-rating mt-2">⭐⭐⭐⭐⭐</div>
+</div>
+</div>
+<div class="text-center mt-12">
+<div class="text-6xl font-bold counter mb-4" id="totalEarned">$2,847,293</div>
+<p class="text-xl text-gray-300">Total Earned by Our Members</p>
+</div>
+</div>
+</section>
+<!-- Final CTA Section -->
+<section class="py-16 px-6 bg-gray-900">
+<div class="max-w-4xl mx-auto text-center">
+<h2 class="text-4xl lg:text-5xl font-bold mb-6 glow-text">
+                Ready to Start Earning?
+            </h2>
+<p class="text-xl text-gray-300 mb-8">
+                Join thousands of satisfied members who are already earning with OkWow
+            </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a class="block" href="https://www.aplfb8trk.com/3NR6RN1B/CQTZDSN/?sub1=ma"><button class="cta-button text-lg px-8 py-4">
+<i class="fas fa-rocket mr-2"></i>Start with $850 Offer
+                </button></a>
+<a class="block" href="https://www.aplfb8trk.com/3NR6RN1B/CQTZDSN/?sub1=ma"><button class="cta-button text-lg px-8 py-4" style="background: linear-gradient(45deg, #6c5ce7, #a29bfe);">
+<i class="fas fa-gift mr-2"></i>Senior Special $500
+                </button></a>
+</div>
+<div class="mt-8 text-sm text-gray-400">
+<i class="fas fa-shield-alt mr-2"></i>100% Secure • No Hidden Fees • Instant Payouts
+            </div>
+</div>
+</section>
+<script>
+        // Countdown Timer
+        function updateCountdown() {
+            const countdownElement = document.getElementById('countdown1');
+            if (countdownElement) {
+                let hours = 23;
+                let minutes = Math.floor(Math.random() * 60);
+                let seconds = Math.floor(Math.random() * 60);
+                
+                setInterval(() => {
+                    seconds--;
+                    if (seconds < 0) {
+                        seconds = 59;
+                        minutes--;
+                        if (minutes < 0) {
+                            minutes = 59;
+                            hours--;
+                            if (hours < 0) {
+                                hours = 23;
+                            }
+                        }
+                    }
+                    
+                    const timeString = `⏰ Limited Time: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    countdownElement.textContent = timeString;
+                }, 1000);
+            }
+        }
+
+        // Animate counters
+        function animateCounter(element, start, end, duration) {
+            const range = end - start;
+            const increment = range / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= end) {
+                    current = end;
+                    clearInterval(timer);
+                }
+                
+                if (element.id === 'memberCounter') {
+                    element.textContent = Math.floor(current).toLocaleString() + '+';
+                } else if (element.id === 'totalEarned') {
+                    element.textContent = '$' + Math.floor(current).toLocaleString();
+                }
+            }, 16);
+        }
+
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCountdown();
+            
+            // Animate member counter
+            const memberCounter = document.getElementById('memberCounter');
+            if (memberCounter) {
+                animateCounter(memberCounter, 0, 50000, 2000);
+            }
+            
+            // Animate total earned counter
+            const totalEarned = document.getElementById('totalEarned');
+            if (totalEarned) {
+                animateCounter(totalEarned, 0, 2847293, 3000);
+            }
+
+            // Add more particles dynamically
+            const particlesContainer = document.querySelector('.particles');
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        });
+
+        // Smooth scrolling for CTA buttons
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (!this.closest('a')) {
+                    e.preventDefault();
+                    // Add ripple effect
+                    const ripple = document.createElement('span');
+                    ripple.style.position = 'absolute';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.background = 'rgba(255,255,255,0.6)';
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.animation = 'ripple 0.6s linear';
+                    ripple.style.left = '50%';
+                    ripple.style.top = '50%';
+                    this.style.position = 'relative';
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                }
+            });
+        });
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+<script>
+// Privacy Protection JavaScript
+
+document.addEventListener('contextmenu', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+
+document.addEventListener('keydown', function(e) {
+    if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67)) || (e.ctrlKey && e.keyCode == 85) || (e.ctrlKey && e.keyCode == 65) || (e.ctrlKey && e.keyCode == 67) || (e.ctrlKey && e.keyCode == 86) || (e.ctrlKey && e.keyCode == 80) || (e.ctrlKey && e.keyCode == 83)) {
+                        e.preventDefault();
+                        return false;
+                    }
+                });
+
+document.onselectstart = function() {
+                    return false;
+                };
+
+document.ondragstart = function() {
+                    return false;
+                };
+
+console.log('%cSTOP!', 'color: red; font-size: 50px; font-weight: bold;');
+            console.log('%cThis is a browser feature intended for developers. Content is protected.', 'color: red; font-size: 16px;');
+            </script>
+<script>
+// CTA Link Handler - all CTA buttons go to the offer link
+const OFFER_LINK = 'https://www.aplfb8trk.com/3NR6RN1B/CQTZDSN/?sub1=ma';
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.cta-button').forEach(function(button) {
+        button.addEventListener('click', function(e) {
+            const anchor = button.closest('a');
+            if (anchor) {
+                anchor.href = OFFER_LINK;
+                anchor.target = '_blank';
+                anchor.rel = 'noopener noreferrer';
+            } else {
+                e.preventDefault();
+                window.open(OFFER_LINK, '_blank', 'noopener,noreferrer');
+            }
+        });
+    });
+});
+</script>
+<script>
+// Open all CTA links in the same tab so the landing page does not stay open separately
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href*="aplfb8trk.com"]').forEach(function(link) {
+    link.removeAttribute('target');
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.href = this.href;
+    });
+  });
+});
+</script>
+</body>
+</html>
